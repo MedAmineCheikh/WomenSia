@@ -34,5 +34,5 @@ public class Forum  implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="forum")
 	private List<Advertissement> advertissement;
-private Date dateFrum;
+
 }

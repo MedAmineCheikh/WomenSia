@@ -20,6 +20,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
 @Entity
 @Getter
 @Setter
@@ -68,7 +70,7 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
 	private List<Favorite> favorite;
 	
-	@ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="user")
 	private List<Comments> comments;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -78,4 +80,8 @@ public class User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="users")
 	private List<Reclamation> reclamations;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
+	private List<Like> like;
+	
 }

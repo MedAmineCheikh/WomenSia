@@ -38,7 +38,8 @@ public class Posts implements Serializable {
 	private String Rating;
 	@Temporal(TemporalType.DATE)
 	private Date Date_post;
-	
+	private String Category;
+	private int nbrLikePosts;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="posts")
 	private List<Comments> comments;
 	
@@ -46,5 +47,7 @@ public class Posts implements Serializable {
 	private List<User> users;
 	@ManyToOne
 	Forum forum ;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="post")
+	private List<Like> Like;
 
 }
