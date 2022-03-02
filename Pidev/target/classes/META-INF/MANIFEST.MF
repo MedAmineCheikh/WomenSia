@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Built-By: lenovo
-Build-Jdk: 16.0.2
 Implementation-Title: examen1-squelette
 Implementation-Version: 1.0
+Built-By: 2018
 Implementation-Vendor-Id: tn.esprit.spring
-Implementation-URL: https://spring.io/projects/spring-boot/examen1-squel
- ette
+Build-Jdk: 1.8.0_60
+Implementation-URL: https://spring.io/projects/spring-boot/examen1-squ
+ elette
 Created-By: Maven Integration for Eclipse
 

@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,6 +35,7 @@ public class Comments implements Serializable{
 	private Double Likes;
 	private String Emoji;
 	private String Rating;
+	private Date date; 
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<User> users;
