@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,5 +34,5 @@ public class Forum  implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="forum")
 	private List<Advertissement> advertissement;
-
+private Date dateFrum;
 }
