@@ -16,4 +16,15 @@ public interface IEventService {
 	Event updateEvent(Event c);
 
 	Event retrieveEvent(Integer id);
+
+	
+
+	//Event getMostVisitedEvent();
+	
+	void getMostVisitedEvent();
+
+	void getMinVisitedEvent();
+
+
+
 }

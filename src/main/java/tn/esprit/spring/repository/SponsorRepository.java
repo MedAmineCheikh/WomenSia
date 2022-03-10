@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.spring.entities.Sponsors;
 
 @Repository
-public interface SponsorRepository extends CrudRepository<Sponsors,Integer> {
+public interface SponsorRepository extends CrudRepository <Sponsors,Integer> {
 
 
 }

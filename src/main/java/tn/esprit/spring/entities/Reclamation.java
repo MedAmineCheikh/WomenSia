@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,16 +32,19 @@ public class Reclamation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdReclamation;
 	private String NomReclamation;
-	private String TypeReclamation;
+	@Enumerated(EnumType.STRING)
+	TypeReclamation TypeReclam;
 
     private String Nom;
     private String Prenom ;
-    
+    private String Adresse;
     private String Email;
     @Temporal(TemporalType.DATE)
     private Date date;
     private String Description ;
+    private String Traité ; 
     @ManyToOne
 	User users ;
+ 
     }
 	

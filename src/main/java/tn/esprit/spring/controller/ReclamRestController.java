@@ -1,6 +1,9 @@
 package tn.esprit.spring.controller;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
  import tn.esprit.spring.entities.Reclamation;
- import tn.esprit.spring.services.IReclamService;
+import tn.esprit.spring.entities.User;
+import tn.esprit.spring.services.IReclamService;
+import tn.esprit.spring.services.ReclamServiceImpl;
  
 @RestController
 @Api(tags = "Gestion de reclamation")
@@ -24,6 +29,7 @@ public class ReclamRestController {
 
 	@Autowired
 	IReclamService rService;
+	
 
 	// http://localhost:8085/app/Reclamation/retrieve-all-reclamation
 	@ApiOperation(value = "Récupérer la liste des reclamations")
@@ -52,6 +58,11 @@ public class ReclamRestController {
 	public Reclamation addReclam(@RequestBody Reclamation c) {
 		return rService.addReclamation(c);
 	}
+	// http://localhost:8089/app/Reclamation/retrieve-bydate/{datedeb}/{datefin}
+	@GetMapping("/retrieve-bydate/{datedeb}/{datefin}")
+	public void retrievepardate(@PathVariable("datedeb")String Datedeb ,@PathVariable("datefin")String Datefin) {
+		rService.retrieveByDate(Datedeb, Datefin);
+	}
 
 	// http://localhost:8085/app/Reclamation/remove-Reclam/{Reclamation-id}
 	@DeleteMapping("/remove-Reclam/{Reclam-id}")
@@ -64,6 +75,18 @@ public class ReclamRestController {
 	public Reclamation modifyEvent(@RequestBody Reclamation c) {
 		return rService.updateReclamation(c);
 	}
-
-
+	
+	//http://localhost:8085/app/Reclamation/traiterReclam/{boool}/{idrecc}
+	@PostMapping("/traiterReclam/{boool}/{idrecc}")
+	public void TraitementReclam(@PathVariable("boool")Boolean bool,@PathVariable("idrecc")Integer idrec) throws MessagingException{
+		rService.traiterReclam(bool,idrec);
+	}
+	 
+ // localhost:8085/app/Reclamation/statcomplaint
+			 @GetMapping("/statcomplaint")
+			public void StatComplainers(){
+				rService.StatComplainer();
+			} 
+  
 }
+ 

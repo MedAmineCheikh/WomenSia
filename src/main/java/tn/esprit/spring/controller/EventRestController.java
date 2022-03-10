@@ -36,6 +36,21 @@ public class EventRestController {
 	
 	}
 	
+	
+	
+	//http://localhost:8085/app/Event/retrieve-most-visited-event
+@GetMapping("/retrieve-most-visited-event")
+	
+	public void getMostVisitEvent() {
+		eService.getMostVisitedEvent();
+	}
+
+//http://localhost:8085/app/Event/retrieve-less-visited-event
+@GetMapping("/retrieve-less-visited-event")
+
+public void getMinVisitEvent() {
+	eService.getMinVisitedEvent();
+}
 
 	//http://localhost:8085/app/Event/retrieve-event/12
 	@ApiOperation(value = "Récupérer un event par Id")

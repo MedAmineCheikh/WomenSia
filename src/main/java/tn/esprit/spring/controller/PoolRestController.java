@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,14 @@ public class PoolRestController {
 	public Pool addPool(@RequestBody Pool c) {
 		return poolService.addPool(c);
 	}
+	// http://localhost:8085/app/Cagnotte/donate/{account-id}/{pool-id}/{mont}/{CN}/{Ccv}
+
+		@PostMapping("/donate/{account-id}/{pool-id}/{mont}/{CN}/{Ccv}")
+		public void donation(@PathVariable("account-id") Integer  idAccount,@PathVariable("pool-id") Integer idPool,@PathVariable("mont") Integer Montant,@PathVariable("CN")  String CardNumber,@PathVariable("Ccv")String ccv) throws SQLException {
+			poolService.Donate(idAccount,idPool,Montant,CardNumber,ccv);
+		}
+		
+	
 
 	// http://localhost:8085/app/Cagnotte/remove-pool/{pool-id}
 	@DeleteMapping("/remove-pool/{pool-id}")
@@ -67,5 +76,12 @@ public class PoolRestController {
 		return poolService.updatePool(c);
 	}
 
+	// http://localhost:8085/app/Cagnotte/manage-pool
+	@PutMapping("/manage-pool/{pool-id}/{test}")
+	public void managePool(@PathVariable("pool-id")Integer PoolId, @PathVariable boolean test) {
+		 poolService.ManagePool(PoolId,test);
+		  
+	}
+	
 
 }

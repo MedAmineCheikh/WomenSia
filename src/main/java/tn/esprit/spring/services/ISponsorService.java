@@ -18,4 +18,6 @@ public interface ISponsorService {
 
 	Sponsors retrieveSponsors(Integer id);
 
+
+	void affectSponsEvent(int idSponsor, int i);
 }

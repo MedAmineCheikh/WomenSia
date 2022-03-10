@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,8 @@ public class Pool implements Serializable {
 	private int Sum;
 	private int Goal ;
 	private String Description;
+	 @Enumerated(EnumType.STRING)
+	Etat etat;
 	
 	@OneToOne
 	private Event event;

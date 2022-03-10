@@ -16,12 +16,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
  
 import tn.esprit.spring.entities.Sponsors;
+import tn.esprit.spring.services.IEventService;
 import tn.esprit.spring.services.ISponsorService;
 @RestController
 @Api(tags = "Gestion des Sponsors")
 @RequestMapping("/Sponsors")
 public class SponsorRestController {
-
+ 
+	
+	@Autowired
+	IEventService EService;
 	@Autowired
 	ISponsorService sService;
 
@@ -34,6 +38,7 @@ public class SponsorRestController {
 		return listSponsors;
 	
 	}
+	
 	
 
 	// http://localhost:8085/app/Sponsors/retrieve-sponsor/8
@@ -64,6 +69,12 @@ public class SponsorRestController {
 	public Sponsors modifySponsors(@RequestBody Sponsors c) {
 		return sService.updateSponsors(c);
 	}
+	
+	// http://localhost:8085/app/Sponsors/affect-sponsor
+		@PutMapping("/affect-sponsor/{Id-Sponsor}/{Id-Event}")
+		public void affecterSponsEvent(@PathVariable("Id-Sponsor") int idSponsor,@PathVariable("Id-Event") int idEvent ){
+			sService.affectSponsEvent(idSponsor,idEvent );
+		}
 
 
 }

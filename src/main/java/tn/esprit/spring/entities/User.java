@@ -34,13 +34,21 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdAccount;
+	private int tel;
+	
 	private String nom;
 	private String prenom;
 	@Temporal(TemporalType.DATE)
 	private java.util.Date dateNaissance;
-    private String email;
+    private String Email;
 	private String Username;
 	private String Password;
+	private Long AccountNumber;
+	 
+	private String CardNumber ;
+	private String Ccv ;
+	private Double CurrentBalance;
+	
 	@Enumerated(EnumType.STRING)
 	Role Role;
 	private Double Balance;

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Event;
+ 
 import tn.esprit.spring.repository.EventRepository;
+ 
+import tn.esprit.spring.repository.UserRepository;
  
 @Service
 @Slf4j
@@ -16,6 +19,9 @@ public class EventServiceImpl implements IEventService {
 	
 	@Autowired
 	EventRepository eventRepository;
+
+	@Autowired
+	UserRepository uRepository ;
 
 	@Override
 	public List<Event> retrieveAllEvents() {
@@ -50,6 +56,30 @@ public class EventServiceImpl implements IEventService {
 		Event c= eventRepository.findById(id).get();
 		return c;
 	}
-
+	
+	/*@Override 
+	public Event getMostVisitedEvent() {
+		int event_id = eventRepository.getMostVisited();
+		Event event = eventRepository.findById(event_id).get();
+		log.info("the most visited event is : "+event.getEventname()+" "+event.getDescription()+".");
+		return event;
+	};*/
+	
+	@Override 
+	public void getMostVisitedEvent() {
+		int event_id = eventRepository.getMostVisited();
+		Event event = eventRepository.findById(event_id).get();
+		log.info("the most visited event is : "+event.getEventname()+" "+event.getDescription()+".");
+		
+	};
+	
+	@Override 
+	public void getMinVisitedEvent() {
+		int event_id = eventRepository.getLessVisited();
+		Event event = eventRepository.findById(event_id).get();
+		log.info("the most visited event is : "+event.getEventname()+" "+event.getDescription()+".");
+		
+	};
+	
 }
  

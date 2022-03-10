@@ -5,15 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 import com.sun.istack.NotNull;
 
@@ -37,7 +37,7 @@ public class Event implements Serializable {
 	private int IdEvent;
  	private String Eventname;
 	private String Organizername;
-	@Temporal(TemporalType.DATE)
+
 	private Date DateEvent;
     private String Duration;
     private String Files;
@@ -48,7 +48,15 @@ public class Event implements Serializable {
     private Pool pool;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<User> users;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private  List<Sponsors> sponsors;
+    @ManyToMany 
+    private  List <Sponsors> sponsors;
+    //@ManyToOne
+	//Sponsors sponsors;
+   // @OneToMany(mappedBy="event")
+	//private List<Sponsors> sponsors;
+	public void setSponsors() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 	
